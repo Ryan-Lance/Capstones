@@ -1,0 +1,286 @@
+\documentclass[11pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\rhead{Ryan Lance}
+\lhead{Classical Mechanics HWK 5}
+
+\begin{document}
+\paragraph{Problem 1} For a point projectile in a vertical plane, use the Hamilton Jacobi method to determine the equation of the trajectory and the dependence of the coordinates on time. You may assume that the projectile is fired off at time $t=0$ from the origin and makes an angel $\alpha$ with the horizontal.
+
+\paragraph{Solution} We first write the Hamiltonian for a particle moving in 2D with gravity:
+\begin{equation}
+H=\dfrac{p_x^2}{2m}+\dfrac{p_y^2}{2m}+mgy
+\end{equation}
+The Hamiltonian does not depend explicitly on x, so we know that $\dot{p_x}=0$, which implies $p_x=const.=\alpha_x$. In addition, the Hamiltonian has no explicit time dependence, which means that it is equal to the total energy $H = E = \alpha_E$. We can now assume solution's to the Hamilton-Jacobi equation of the kind:
+\begin{equation}
+S = W(y, \alpha_y, t)+\alpha_x x -\alpha_E t
+\end{equation}
+The Hamilton-Jacobi equation is:
+\begin{equation}
+H+\dfrac{\partial S}{\partial t} = 0
+\end{equation}
+We can substitute in the relationships:
+\begin{equation}
+p_x=\alpha_x = \dfrac{dW}{dx} \hspace{10mm}
+p_y = \dfrac{dW}{dy}
+\end{equation}
+Into the Hamiltonian, then into the Hamilton-Jacobi equation to get:
+\begin{equation}
+\dfrac{1}{2m}\Big(\alpha_x^2 +\Big(\dfrac{\partial W}{\partial y}\Big)^2 \Big)+mgy-\alpha_E=0
+\end{equation}
+Now we solve for $W$ and integrate.
+\begin{equation}
+\dfrac{dW}{dy}=\sqrt{-\alpha_x^2 +2m(\alpha_E-mgy)}
+\end{equation}
+\begin{equation}
+W = \int\sqrt{(2m\alpha_E-\alpha_x^2-2m^2gy}) dy
+\end{equation}
+\begin{equation}
+W = -\dfrac{1}{2m^2g}\Big(\dfrac{2}{3}\Big)\Big[2m\alpha_E-\alpha_x-2m^2gy\Big]^{3/2}+C
+\end{equation}
+\begin{equation}
+W = -\dfrac{1}{3m^2g}\Big[2m\alpha_E-\alpha_x^2 -2m^2gy \Big]^{3/2}
+\end{equation}
+Now we have Hamilton's principle function $S$.
+\begin{equation}
+S = -\dfrac{1}{3m^2g}\Big(2m\alpha_E - \alpha_x^2 - 2m^2gy\Big)^{3/2}+\alpha_xx-\alpha_Et
+\end{equation}
+Now we can solve for the second constants of integration $\beta_\sigma$.
+\begin{equation}
+\beta_1 = \dfrac{\partial S}{\partial \alpha_E}=-\dfrac{1}{m^2g}\dfrac{3}{2}\Big(2m\alpha_E-\alpha_x^2-2m^2gy\Big)^{1/2}(2m)-t
+\end{equation}
+By rearrangement, we have an equation for $y(t)$ with some unknown constants of integration.
+\begin{equation}
+y = -\dfrac{g}{2}(\beta_1+t)^2+\dfrac{\alpha_E}{mg}-\dfrac{\alpha_x^2}{2m^2g}
+\end{equation}
+The next relationship is:
+\begin{equation}
+\beta_2 = \dfrac{\partial S}{\partial \alpha_x} =-\dfrac{1}{m^2g}\dfrac{3}{2}\Big(2m\alpha_E-\alpha_x^2-2m^2gy\Big)^{1/2}(-2\alpha_x)+x 
+\end{equation}
+This yields our second equation of motion x(t):
+\begin{equation}
+x = \beta_2 - \dfrac{\alpha_x}{m^2g}\Big(2m\alpha_E-\alpha_x^2-2m^2gy \Big)^{1/2}
+\end{equation}
+We will substitute y from equation (12):
+\begin{equation}
+x = \beta_2 - \dfrac{\alpha_x}{m^2g}\Big(2m\alpha_E-\alpha_x^2-2m^2g\Big(-\dfrac{g}{2}(\beta_1+t)^2+\dfrac{\alpha_E}{mg}-\dfrac{\alpha_x^2}{2m^2g}\Big) \Big)^{1/2}
+\end{equation}
+The equation simplifies to
+\begin{equation}
+x = \beta_2-\dfrac{\beta_1+t}{m}\alpha_x
+\end{equation}
+Now we can evaluate the initial conditions:
+\begin{center}
+\begin{tabular}{l l}
+$x(t=0) = 0$ & $\dot{x}(t) = v_0 \cos{\alpha}$ \\
+$y(t=0) = 0$ & $\dot{y}(t) = v_0 \sin{\alpha}$ \\
+\end{tabular}
+\end{center}
+\vspace{5mm}
+First relation.
+\begin{equation}
+\dot{y} = -g(\beta_1+t)
+\end{equation}
+\begin{equation}
+\dot{y}(t=0) = -g\beta_1 = v_o\sin\alpha
+\end{equation}
+\begin{equation}
+\beta_1 = -\dfrac{v_o\sin\alpha}{g}
+\end{equation}
+Second relation.
+\begin{equation}
+\dot{x}(t) = -\dfrac{\alpha}{m} = v_0\cos\alpha
+\end{equation}
+\begin{equation}
+\alpha_x = -mv_0\cos\alpha
+\end{equation}
+Third relation.
+\begin{equation}
+x(0) = \beta_2 - \dfrac{\beta_1\alpha_x}{m}=0
+\end{equation}
+\begin{equation}
+\beta_2 = \dfrac{\beta_1\alpha_x}{m}
+\end{equation}
+Fourth relation (conservation of energy)
+\begin{equation}
+y(0) = -\dfrac{g}{2}\beta_1^2+\dfrac{\alpha_E}{mg}-\dfrac{\alpha_x^2}{2m^2g}=0
+\end{equation}
+\begin{equation}
+\alpha_E = \sqrt{mg\Big(\dfrac{g\beta_1^2}{2}+\dfrac{\alpha_x^2}{2m^2g}\Big)}
+\end{equation}
+Substituting equations (19) and (21).
+\begin{equation}
+\alpha_E = mg\Big(\dfrac{g\beta_1^2}{2}+\dfrac{\alpha_x^2}{2m^2g}\Big)
+\end{equation}
+\begin{equation}
+\alpha_E = mg\Big(\dfrac{g}{2}\Big(\dfrac{v_0\sin\alpha}{g}\Big)^2+\dfrac{(v_0\cos\alpha)^2}{2m^2g}\Big)
+\end{equation}
+\begin{equation}
+\alpha_E = mg\Big(\dfrac{v_0^2}{2g}(\sin^2\alpha+\cos^2\alpha)\Big)
+\end{equation}
+Finally we have the total energy, which is the initial kinetic energy:
+\begin{equation}
+\alpha_E = E = \dfrac{1}{2}mv_0^2
+\end{equation}
+By plugging in all the necessary relationships, we can obtain the equations of motion.
+\begin{equation}
+x = \beta_2 - \dfrac{\beta_1+t}{m}\alpha_x
+\end{equation}
+\begin{equation}
+x = \dfrac{\beta_1\alpha_x}{m} - \dfrac{\beta_1\alpha_x}{m}-\dfrac{\alpha_x t}{m}
+\end{equation}
+\begin{equation}
+x = -(-mv_0\cos\alpha)t
+\end{equation}
+\begin{equation}
+\boxed{x = v_0\cos\alpha t}
+\end{equation}
+\begin{equation}
+y = -\dfrac{g}{2}\Big(-\dfrac{v_0\sin\alpha}{g}+t\Big)^2+\dfrac{0.5mv_0^2}{mg}-\dfrac{(-mv_0\cos\alpha)^2}{2m^2g}
+\end{equation}
+\begin{equation}
+y = -\dfrac{g}{2}\Big(\dfrac{v_0^2\sin^2\alpha}{g^2}-\dfrac{2v_0\sin\alpha}{g}t+t^2\Big)+\dfrac{v_0^2}{2g}-\dfrac{v_0^2\cos^2\alpha}{2g}
+\end{equation}
+\begin{equation}
+y = -\dfrac{gt^2}{2}+v_0\sin\alpha t+\dfrac{v_0^2}{2g}-\dfrac{v_0^2}{2g}
+\end{equation}
+\begin{equation}
+\boxed{y = v_0\sin\alpha t - \dfrac{1}{2}gt^2}
+\end{equation}
+
+
+\vspace{5mm}
+\paragraph{Problem 2} A particle of moves in periodic motion in one dimension under the influence of a potential $V(x) = F|x|$, where F is a constant. Using action-angle variables, find the period of motion as a function of the particle's energy. 
+
+\paragraph{Solution}
+First we write down the Hamiltonian.
+\begin{equation}
+H=\dfrac{p^2}{2m} + F|x|
+\end{equation}
+We will use the Hamilton-Jacobi equation, so we assume solutions of $S$ are separable with respect to time:
+\begin{equation}
+S = W(x, \alpha, t) - \alpha_E t
+\end{equation}
+Plugging this into the Hamilton-Jacobi equation we get:
+\begin{equation}
+H+\dfrac{\partial S}{\partial t} = 0
+\end{equation}
+\begin{equation}
+\dfrac{1}{2m}(\dfrac{dW}{dx})^2+F|x| -\alpha_E=0
+\end{equation}
+Now we solve for the conjugate momenta, which is $p_x=\dfrac{dW}{dx}$:
+\begin{equation}
+p_x=\dfrac{dW}{dx}=\sqrt{2m(\alpha_E-F|x|)}
+\end{equation}
+From here, we make another change of coordinates to the action variable J in order to find the frequency of oscillation, following the prescription in Fetter-Walecka.
+\begin{equation}
+J_\sigma = \oint p_\sigma dq_\sigma
+\end{equation}
+Substituting our momenta $p_\sigma=\dfrac{\partial S}{\partial \alpha_\sigma}$ into $J$, I integrate over a quarter-period and multiply by four.
+\begin{equation}
+J_x = 4\oint_{x=0}^{x=x_0} \sqrt{2m(\alpha_E-Fx)} dx
+\end{equation}
+\begin{equation}
+J_x = 4(\dfrac{1}{-2mF}\dfrac{2}{3}(2m(\alpha_E-Fx))^{3/2})|_0^{x=x_0}
+\end{equation}
+\begin{equation}
+J_x = \dfrac{-4}{3mF}[(2m\alpha_E-2mFx_0)^{3/2}-(2m\alpha_E)^{3/2}]
+\end{equation}
+Since $E = Fx_0$, the first term goes to zero.
+\begin{equation}
+J_x= \dfrac{4}{3mF}(2mE)^{3/2}
+\end{equation}
+Solve for $\alpha_E$:
+\begin{equation}
+H(J_1, ..., J_n)=H(J_x)=\alpha_E=E=\dfrac{1}{2m}\Big(\dfrac{3mFJ}{4}\Big)^{3/2}
+\end{equation}
+Now we solve for the frequency, simply by computing the derivative of the Hamiltonian with respect to the action variable $J$.
+\begin{equation}
+\nu_x = \dfrac{\partial H}{\partial J_x}=\dfrac{1}{2m}\Big(\dfrac{3mF}{4}\Big)^{2/3}\dfrac{2}{3}J^{-1/3}
+\end{equation}
+\begin{equation}
+\nu_x = \dfrac{F}{4\sqrt{2mE}}
+\end{equation}
+Finally we have the period:
+\begin{equation}
+\boxed{T=\dfrac{1}{\nu}=\dfrac{4\sqrt{2mE}}{F}}
+\end{equation}
+
+
+\paragraph{Problem 3} 
+(a) For a one-dimensional system with the Hamiltonian:
+\begin{equation}
+H=\dfrac{p^2}{2} - \dfrac{1}{2q^2}
+\end{equation}
+show that 
+\begin{equation}
+D=\dfrac{pq}{2}-Ht
+\end{equation}
+is a constant of motion.
+(b) As a generalization to part (a), for motion in a plane with the Hamiltonian
+\begin{equation}
+H=|\bold{p}|^n=ar^{-n}
+\end{equation}
+where $\bold{p}$ is the vector of the momenta conjugate to the Cartesian coordinates, show that 
+\begin{equation}
+D=\dfrac{\bold{p\bullet r}}{2}-Ht
+\end{equation}
+is a constant of motion.
+
+\paragraph{Solution} For this problem, we need to show that $\dfrac{dD}{dt}=0$ in each case. This is easy to do with the help of Poisson brackets. Let's define the Poisson bracket in general for two functions of the generalized coordinates and genaralized momenta $q1,..,qn, p1, ..., pn.$
+\begin{equation}
+\{F, G\} = \dfrac{\partial F}{\partial q}\dfrac{\partial G}{\partial p}-\dfrac{\partial F}{\partial p}\dfrac{\partial G}{\partial q}
+\end{equation}
+When we take the Poisson bracket of some function $F$ with the Hamiltonian $H$ we get:
+\begin{equation}
+\{F, H\} = \Sigma_\sigma \dfrac{\partial F}{\partial q_\sigma}\dfrac{\partial H}{\partial p_\sigma} - \dfrac{\partial F}{\partial p_\sigma}\dfrac{\partial H}{\partial q_\sigma}
+\end{equation}
+\begin{equation}
+\{F, H\} = \dfrac{\partial F}{\partial q}\dot{q} - \dfrac{\partial F}{\partial p}\Big(-\dot{p}\Big)=\dfrac{\partial F}{\partial q}\dot{q} + \dfrac{\partial F}{\partial p}\dot{p}
+\end{equation}
+This conveniently let's us rewrite the total derivative of F with Poisson brackets.
+\begin{equation}
+\dfrac{dF}{dt} = \Sigma_\sigma (\dfrac{\partial F}{\partial q_\sigma}\dot{q_\sigma} + \dfrac{\partial F}{\partial p_\sigma}\dot{p_\sigma}) +\dfrac{\partial F}{\partial t}
+\end{equation}
+\begin{equation}
+\dfrac{dF}{dt} = \{F, H\} +\dfrac{\partial F}{\partial t}
+\end{equation}
+In order for the quantity F to be conserved, it's Poisson bracket has to equal to zero and there cannot be any explicit time dependence, or the Poisson bracket has to cancel with the explicit time dependence. \\ \\
+For part (a) we evaluate the Poisson bracket of D with the Hamiltonian:
+\begin{equation}
+\{D, H\}=\dfrac{\partial D}{\partial q}\dfrac{\partial H}{\partial p}-\dfrac{\partial D}{\partial p}\dfrac{\partial H}{\partial q}
+\end{equation}
+\begin{equation}
+\{D, H\}= \dfrac{p}{2}\dfrac{2p}{2}-\Big(-\dfrac{1}{2}(-2)q^3\Big)\dfrac{q}{2}
+\end{equation}
+\begin{equation}
+\{D, H\} = \dfrac{p^2}{2}- \dfrac{1}{2q^2} = H
+\end{equation}
+\begin{equation}
+\boxed{\dfrac{dD}{dt}=\{D, H\}+\dfrac{\partial D}{\partial t} = H-H=0}
+\end{equation}
+The Poisson bracket is equal to H, which cancels with the explicit time dependence. Therefore D is a constant of motion.
+\\\\
+
+In part (b) we do the exact same thing.
+\begin{equation}
+\{D, H\}=\dfrac{\partial D}{\partial q}\dfrac{\partial H}{\partial p}-\dfrac{\partial D}{\partial p}\dfrac{\partial H}{\partial q}
+\end{equation}
+\begin{equation}
+\{D, H\}= \dfrac{1}{2}\Big(\dfrac{dp}{dr}r+p\dfrac{dr}{dr}\Big)(n|p|^{n-1})-(-nar^{-n-1}\Big(\dfrac{r}{2}\Big))
+\end{equation}
+\begin{equation}
+\{D, H\} = \dfrac{n}{2}\Big(|p|^{n}+ar^{-n}\Big)=\dfrac{n}{2}(H+H)=nH
+\end{equation}
+\begin{equation}
+\dfrac{dD}{dt}=\{D, H\}+\dfrac{\partial D}{\partial t} = nH-H=H(n-1)
+\end{equation}
+
+
+\end{document}

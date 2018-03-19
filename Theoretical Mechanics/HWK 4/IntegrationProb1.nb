@@ -1,0 +1,254 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9358,        246]
+NotebookOptionsPosition[      8894,        226]
+NotebookOutlinePosition[      9265,        242]
+CellTagsIndexPosition[      9222,        239]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"e", "=", " ", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"KroneckerDelta", "[", 
+       RowBox[{"i", ",", "j"}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", " ", "3"}], "}"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"j", ",", " ", "3"}], "}"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"ClearAll", "[", 
+  RowBox[{
+  "r", ",", " ", "x1", ",", " ", "x2", ",", " ", "x3", ",", " ", "m", ",", 
+   " ", "i", ",", " ", "j", ",", " ", "p", ",", " ", "a", ",", " ", "b", ",", 
+   " ", "c", ",", " ", "M", ",", "InertiaCorner", ",", "InertiaCenter"}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"M", " ", "=", " ", "M"}], ";"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"Define", " ", "a"}], ",", " ", "b", ",", " ", "c", ",", " ", 
+    RowBox[{
+     RowBox[{"rho", " ", "here"}], "..."}]}], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"a", "=", "a"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"b", "=", "b"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"c", "=", "c"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"p", "=", 
+   RowBox[{"M", "/", 
+    RowBox[{"(", 
+     RowBox[{"4", "*", "Pi", "*", "c", "*", 
+      RowBox[{
+       RowBox[{"b", "^", "2"}], "/", "3"}]}], ")"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"r", "=", " ", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"b", "*", "rho", "*", 
+       RowBox[{"Sin", "[", "theta", "]"}], "*", 
+       RowBox[{"Cos", "[", "phi", "]"}]}], ",", "\[IndentingNewLine]", 
+      RowBox[{"b", "*", "rho", "*", 
+       RowBox[{"Sin", "[", "theta", "]"}], "*", 
+       RowBox[{"Sin", "[", "phi", "]"}]}], ",", "\[IndentingNewLine]", 
+      RowBox[{"a", "*", "rho", "*", 
+       RowBox[{"Cos", "[", "theta", "]"}]}]}], "\[IndentingNewLine]", "}"}]}],
+    ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"integrand", "[", "r_", "]"}], "=", " ", 
+    RowBox[{"c", "*", 
+     RowBox[{"b", "^", "2"}], "*", "p", "*", 
+     RowBox[{"rho", "^", "2"}], "*", 
+     RowBox[{"Sin", "[", "theta", "]"}], "*", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"KroneckerDelta", "[", 
+         RowBox[{"i", ",", "j"}], "]"}], "*", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"r", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "^", "2"}], "+", 
+          RowBox[{
+           RowBox[{"r", "[", 
+            RowBox[{"[", "2", "]"}], "]"}], "^", "2"}], "+", 
+          RowBox[{
+           RowBox[{"r", "[", 
+            RowBox[{"[", "3", "]"}], "]"}], "^", "2"}]}], ")"}]}], "-", 
+       RowBox[{
+        RowBox[{"r", "[", 
+         RowBox[{"[", "i", "]"}], "]"}], "*", 
+        RowBox[{"r", "[", 
+         RowBox[{"[", "j", "]"}], "]"}]}]}], ")"}]}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"CanonicalInertia", "=", " ", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"Integrate", "[", 
+       RowBox[{
+        RowBox[{"integrand", "[", "r", "]"}], ",", " ", "\[IndentingNewLine]", 
+        RowBox[{"{", 
+         RowBox[{"rho", ",", " ", "0", ",", "1"}], "}"}], ",", " ", 
+        "\[IndentingNewLine]", 
+        RowBox[{"{", 
+         RowBox[{"phi", ",", "0", ",", 
+          RowBox[{"2", "*", "Pi"}]}], "}"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"{", 
+         RowBox[{"theta", ",", "0", ",", " ", "Pi"}], "}"}]}], "]"}], ",", 
+      " ", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", " ", "3"}], "}"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"j", ",", " ", "3"}], "}"}]}], "\[IndentingNewLine]", "]"}]}], 
+   ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"MatrixForm", "[", "CanonicalInertia", "]"}]}], "Input",
+ CellChangeTimes->{{3.7291134179247856`*^9, 3.729113539344103*^9}, {
+   3.729113617730775*^9, 3.729113625650956*^9}, {3.729113665907731*^9, 
+   3.729113746832919*^9}, {3.7291137787465553`*^9, 3.7291138596606293`*^9}, {
+   3.7291139339238033`*^9, 3.729114252188279*^9}, {3.7291142909584837`*^9, 
+   3.729114513503545*^9}, {3.72911454580879*^9, 3.729114579842645*^9}, {
+   3.729114634738289*^9, 3.7291146856347775`*^9}, {3.729114723944739*^9, 
+   3.7291149148543005`*^9}, {3.729115227004839*^9, 3.7291152346806507`*^9}, {
+   3.7291162923072386`*^9, 3.729116297770952*^9}, {3.7291164683126364`*^9, 
+   3.7291164951107173`*^9}, {3.7291167582263603`*^9, 3.729116826947913*^9}, 
+   3.7291170570961847`*^9, {3.729789510802308*^9, 3.7297896581023808`*^9}, {
+   3.7297896901057796`*^9, 3.7297898081455684`*^9}, {3.729789863725178*^9, 
+   3.72978991166808*^9}, {3.7297899612408414`*^9, 3.7297899824156985`*^9}, {
+   3.7297900767367887`*^9, 3.7297901606785994`*^9}, {3.7297902036280527`*^9, 
+   3.729790212989727*^9}, {3.7297902823025093`*^9, 3.729790286365535*^9}, {
+   3.7297903553456707`*^9, 3.7297903740302734`*^9}, {3.729792190588476*^9, 
+   3.7297922161091385`*^9}, {3.729792692648161*^9, 3.7297926930232134`*^9}}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Part","pkspec1",
+   "\"The expression \\!\\(\\*RowBox[{\\\"i\\\"}]\\) cannot be used as a part \
+specification.\"",2,171,48,15407690898185102973,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{
+  3.729116298719551*^9, {3.7291164757131786`*^9, 3.7291164957014647`*^9}, 
+   3.7291168132428064`*^9, 3.7291171086580153`*^9, {3.7297897984111586`*^9, 
+   3.729789808864152*^9}, 3.7297898803903327`*^9, 3.729789912699214*^9, {
+   3.7297899671275144`*^9, 3.72978998335306*^9}, {3.729790113766762*^9, 
+   3.7297901279269085`*^9}, 3.7297901617722483`*^9, 3.729790213817696*^9, 
+   3.729790287209146*^9, 3.7297903744519377`*^9, 3.729792196617901*^9, 
+   3.729792693710558*^9}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Part","pkspec1",
+   "\"The expression \\!\\(\\*RowBox[{\\\"j\\\"}]\\) cannot be used as a part \
+specification.\"",2,171,49,15407690898185102973,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{
+  3.729116298719551*^9, {3.7291164757131786`*^9, 3.7291164957014647`*^9}, 
+   3.7291168132428064`*^9, 3.7291171086580153`*^9, {3.7297897984111586`*^9, 
+   3.729789808864152*^9}, 3.7297898803903327`*^9, 3.729789912699214*^9, {
+   3.7297899671275144`*^9, 3.72978998335306*^9}, {3.729790113766762*^9, 
+   3.7297901279269085`*^9}, 3.7297901617722483`*^9, 3.729790213817696*^9, 
+   3.729790287209146*^9, 3.7297903744519377`*^9, 3.729792196617901*^9, 
+   3.729792693741809*^9}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{
+       FractionBox["1", "5"], " ", 
+       RowBox[{"(", 
+        RowBox[{
+         SuperscriptBox["a", "2"], "+", 
+         SuperscriptBox["b", "2"]}], ")"}], " ", "M"}], "0", "0"},
+     {"0", 
+      RowBox[{
+       FractionBox["1", "5"], " ", 
+       RowBox[{"(", 
+        RowBox[{
+         SuperscriptBox["a", "2"], "+", 
+         SuperscriptBox["b", "2"]}], ")"}], " ", "M"}], "0"},
+     {"0", "0", 
+      FractionBox[
+       RowBox[{"2", " ", 
+        SuperscriptBox["b", "2"], " ", "M"}], "5"]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{
+  3.7291162998743625`*^9, {3.7291164760569286`*^9, 3.7291164963420906`*^9}, 
+   3.7291168144071627`*^9, 3.729117109848854*^9, {3.7297897996300397`*^9, 
+   3.7297898100538588`*^9}, 3.7297898815780263`*^9, 3.7297899142150416`*^9, {
+   3.7297899678450155`*^9, 3.7297899846813617`*^9}, {3.7297901141886606`*^9, 
+   3.7297901283488426`*^9}, 3.7297901618972635`*^9, 3.7297902160211115`*^9, 
+   3.729790288615593*^9, 3.7297903760615625`*^9, 3.7297921983212833`*^9, 
+   3.729792695226386*^9}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.729116314852177*^9, 3.729116314867753*^9}}]
+},
+WindowSize->{766, 772},
+WindowMargins->{{Automatic, -7}, {Automatic, 0}},
+Magnification:>1.2 Inherited,
+FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (July 28, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 5177, 125, 710, "Input"],
+Cell[5760, 149, 719, 13, 26, "Message"],
+Cell[6482, 164, 719, 13, 26, "Message"],
+Cell[7204, 179, 1579, 41, 126, "Output"]
+}, Open  ]],
+Cell[8798, 223, 92, 1, 37, "Input"]
+}
+]
+*)
+
